@@ -13,6 +13,10 @@ services:
     networks:
       - core-net
 
+
+volumes:
+  node_modules: {}
+
 networks:
   core-net:
     driver: bridge

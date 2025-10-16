@@ -4,14 +4,14 @@ FROM python:3.11-slim
 # Set working directory
 WORKDIR /app
 
-# Copy and install dependencies
-COPY pyproject.toml poetry.lock* ./
+# Copy and install dependencies from assistant_core
+COPY assistant_core/pyproject.toml assistant_core/poetry.lock* ./
 RUN pip install --no-cache-dir poetry \
     && poetry config virtualenvs.create false \
-    && poetry install --no-root --no-dev
+    && poetry install --no-root
 
-# Copy application code
-COPY . .
+# Copy application code from assistant_core
+COPY assistant_core/ .
 
 # Expose application port (if applicable)
 EXPOSE 8000
