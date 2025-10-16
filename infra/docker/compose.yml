@@ -1,0 +1,15 @@
+version: "3.9"
+services:
+  assistant-core:
+    build:
+      context: ../..
+      dockerfile: infra/docker/Dockerfile
+    ports:
+      - "8000:8000"
+    networks:
+      - core-net
+
+networks:
+  core-net:
+    driver: bridge
+

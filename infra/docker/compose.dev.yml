@@ -1,0 +1,18 @@
+version: "3.9"
+
+services:
+  assistant-core:
+    build:
+      context: ../..        # Root of project
+      dockerfile: infra/docker/Dockerfile
+    volumes:
+      - ../..:/app:delegated  # Mount code
+    ports:
+      - "8000:8000"
+    command: python cli.py
+    networks:
+      - core-net
+
+networks:
+  core-net:
+    driver: bridge
